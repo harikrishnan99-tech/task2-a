@@ -11,18 +11,19 @@ pipeline {
         stage('Compile stage') {
             steps {
                 bat "mvn clean compile" 
-        }
-    }
+        }   }
+    
 
-        stage('testing stage') {
-             steps {
-                bat "mvn test"
+        stage('testing stage'){
+            steps{
+                 bat "mvn test"
+            }
         }
            
         stage('SonarQube Analysis'){
             steps{
                 script{
-                    def scannerHome = tool 'sonarScan';
+                    def scannerHome = tool 'sonar';
                     withSonarQubeEnv('sonar'){
                         bat "${scannerHome}/bin/sonar-scanner"
                     }
@@ -32,7 +33,5 @@ pipeline {
     }
 
          
-
-  }
 
 }
