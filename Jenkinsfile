@@ -14,17 +14,17 @@ pipeline {
         }
     }
 
-         stage('testing stage') {
+        stage('testing stage') {
              steps {
                 bat "mvn test"
         }
            
-         stage('SonarQube Analysis'){
-              steps{
-                  script{
-                      def scannerHome = tool 'sonarScan';
-                      withSonarQubeEnv('sonar'){
-                          bat "${scannerHome}/bin/sonar-scanner"
+        stage('SonarQube Analysis'){
+            steps{
+                script{
+                    def scannerHome = tool 'sonarScan';
+                    withSonarQubeEnv('sonar'){
+                        bat "${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
