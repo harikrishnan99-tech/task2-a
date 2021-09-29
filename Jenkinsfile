@@ -20,15 +20,7 @@ pipeline {
             }
         }
            
-        stage('SonarQube Analysis'){
-            steps{
-                script{
-                    withSonarQubeEnv('sonar'){
-                        bat "mvn sonar:sonar"
-                    }
-                }
-            }
-        }
+        
     }
 
          
